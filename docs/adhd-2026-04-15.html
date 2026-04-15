@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ADHD Brain &middot; ADHD文獻日報 &middot; 2026年4月15日</title>
+<meta name="description" content="2026年4月15日 ADHD 文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f0f4ff; --surface: #f8faff; --line: #c8d6e5; --text: #1e2a3a; --muted: #5a6d82; --accent: #2d6cdf; --accent-soft: #d4e2fc; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #e8f0ff 0, var(--bg) 55%, #d0dff5 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), #6fa3f7); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(45,108,223,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(45,108,223,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(30,42,58,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(30,42,58,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,42,58,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #2d7d46; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(45,125,70,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,109,130,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(45,108,223,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #6fa3f7); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 48px; animation: fadeUp 0.5s ease 0.3s both; }
+  .clinic-links { display: flex; flex-direction: column; gap: 12px; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(30,42,58,0.04); }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,42,58,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } .clinic-links { flex-direction: column; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🧠</div>
+    <div class="header-text">
+      <h1>ADHD Brain &middot; ADHD文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年4月15日</span>
+        <span class="badge badge-count">📊 14 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + Zhipu AI GLM-5.1</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日 ADHD 文獻趨勢</h2>
+    <p class="summary-text">今日文獻亮點集中於新藥 Centanafadine 對執行功能的顯著療效，以及多項針對兒童早期數位介入與成人照護不平等的創新對策，顯示 ADHD 醫療正全面朝向全人化、精準化與社區化的方向發展。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">💊</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>Centanafadine 對注意力不足過動症兒童及青少年執行功能與學習問題的療效</h3>
+          <p class="journal-source">Journal of child and adolescent psychopharmacology &middot; Efficacy of Centanafadine for Executive Functioning and Learning Problems in Children and Adolescents with Attention-Deficit/Hyperactivity Disorder.</p>
+          <p>第三期臨床試驗證實，新型三重單胺素再吸收抑制劑 Centanafadine 能在第一週即迅速且顯著地改善 ADHD 兒童及青少年的執行功能與學習問題。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">6至17歲經診斷為ADHD的兒童及青少年</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">高劑量 Centanafadine 藥物治療</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">安慰劑對照組</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">根據 Conners 3 量表評估，患者的執行功能與學習問題 T 分數出現具臨床意義的顯著改善</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">藥物治療</span><span class="tag">兒童ADHD</span><span class="tag">執行功能</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41958186/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">💻</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>網路親子互動治療應用於學齡前注意力不足過動症兒童：一項隨機對照試驗</h3>
+          <p class="journal-source">Child psychiatry and human development &middot; Internet-Delivered Parent-Child Interaction Therapy in Preschool Children with Attention-Deficit/Hyperactivity Disorder: A Randomized Controlled Trial.</p>
+          <p>針對患有 ADHD 的學齡前兒童，透過網路提供的親子互動治療（I-PCIT）不僅能大幅減少孩子的破壞性行為，還能有效降低家長的育兒壓力並提升照護信心。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">4至5歲患有ADHD的學齡前兒童及其主要照顧者</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">網路親子互動治療 (I-PCIT)</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">常規治療 (Treatment as usual)</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">兒童的破壞性行為顯著減少，且家長的育兒壓力與憂鬱症狀降低、自信心提升</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">數位療法</span><span class="tag">家長訓練</span><span class="tag">心理治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41964765/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">🏃‍♂️</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>運動對注意力不足過動症過動/衝動與抑制控制的行為及神經生理學影響：系統性回顧與統合分析</h3>
+          <p class="journal-source">Journal of attention disorders &middot; Effects of Exercise on Hyperactivity/Impulsivity and Inhibitory Control at Behavioral and Electrophysiological Levels in ADHD: A Systematic Review and Meta-Analysis.</p>
+          <p>統合分析指出，每週三次的規律運動介入能有效改善 ADHD 患者的抑制控制能力，但對核心的過動與衝動症狀未有顯著影響。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">經診斷為ADHD的兒童、青少年或成人</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">急性或慢性運動介入</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">不介入或久坐控制組</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">行為層面的抑制控制能力有中至小程度的顯著改善</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">衝動控制</span><span class="tag">兒童ADHD</span><span class="tag">成人ADHD</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41403099/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">🤝</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>以公平為中心的社區衛生工作者介入措施發展，以改善注意力不足過動症的照護參與</h3>
+          <p class="journal-source">Journal of attention disorders &middot; Equity-Centered Development of a Community Health Worker Intervention to Improve Engagement in Care for ADHD.</p>
+          <p>針對少數族裔與弱勢家庭設計的 START 社區衛教介入計畫，能成功提升家長讓 ADHD 兒童接受藥物、心理治療及學校服務的意願與實際利用率。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">6至12歲新診斷為ADHD兒童的主要照顧者（多為弱勢或少数族裔）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">START 社區衛生工作者介入計畫</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">介入前自身前後對照</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">照顧者對治療的參與度與利用率顯著提升，ADHD相關知識增加</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">學校介入</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/40737052/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">📊</span>
+            <span class="utility-mid">中实用性</span>
+          </div>
+          <h3>注意力不足過動症的治療順從性：影響因素與改善策略的系統性回顧</h3>
+          <p class="journal-source">Journal of attention disorders &middot; Treatment Adherence in ADHD: A Systematic Review of Influencing Factors and Strategies for Improvement.</p>
+          <p>研究統整出影響 ADHD 治療順從性的五大因素，並指出結合數位提醒、心理教育與個人化多模式治療是提升長期遵從醫囑的關鍵。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">各年齡層的ADHD患者（兒童、青少年、成人）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">數位提醒、心理教育及多模式治療等提升順從性策略</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">常規照護或順從性障礙因素分析</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">整合藥物與心理社會策略、解決系統性障礙能有效提升整體治療順從性</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">藥物治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41267417/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#6</span>
+            <span class="emoji-icon">🏥</span>
+            <span class="utility-mid">中实用性</span>
+          </div>
+          <h3>美國遠距心理學提供者在成人注意力不足過動症照護輸送上的差異</h3>
+          <p class="journal-source">Journal of attention disorders &middot; Disparities in Adult ADHD Care Delivery Among U.S. Telepsychology Providers.</p>
+          <p>研究發現美國僅有約四分之一的遠距心理治療師願意提供成人 ADHD 服務，遠低於憂鬱症與焦慮症，凸顯了成人 ADHD 在認知行為治療資源上的嚴重短缺。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">美國 PSYPACT 登錄的遠距心理學提供者</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無 (橫斷面調查分析)</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">提供成人ADHD服務與提供憂鬱症/焦慮症服務的比例差異</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">僅 26.4% 提供者願意治療成人ADHD，且僅 21.3% 提供CBT治療</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">成人ADHD</span><span class="tag">心理治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41571598/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#7</span>
+            <span class="emoji-icon">⏳</span>
+            <span class="utility-mid">中实用性</span>
+          </div>
+          <h3>你還在等什麼？！動機、目標導向與情緒調節在解釋注意力不足過動症與拖延症關聯中的角色</h3>
+          <p class="journal-source">Journal of attention disorders &middot; What Are You Waiting For?! Roles of Motivation, Goal Orientation, and Emotion Regulation in Explaining the Link Between ADHD and Procrastination.</p>
+          <p>成人 ADHD 的注意力不集中症狀與拖延行為密切相關，這主要是由於對延遲的敏感度、任務價值感低落及目標調整能力受損所致。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">640名招募自線上的成年人</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無 (橫斷面調查與結構方程模型分析)</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">ADHD症狀高低與拖延傾向的關聯性分析</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">確認了對延遲的敏感度、低任務價值感與彈性目標調整是導致拖延症的核心中介因子</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">成人ADHD</span><span class="tag">執行功能</span><span class="tag">情緒調節</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41549051/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">⚽</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>培養優勢：課外活動參與與患有和未患有注意力不足過動症青少年的心理健康及社交功能之關聯</h3>
+          <p class="journal-source">Research on child and adolescent psychopathology</p>
+          <p>參與體育運動和志工服務等課外活動能顯著提升青少年的社交適應行為與主觀幸福感，且此益處在患有和未患有 ADHD 的青少年中皆適用。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">學校介入</span><span class="tag">注意力</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41965484/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🛡️</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>關於妥瑞症伴隨與不伴隨注意力不足過動症之精神病理學與霸凌經驗的全國性調查</h3>
+          <p class="journal-source">Child and adolescent psychiatry and mental health</p>
+          <p>患有妥瑞症的兒童無論是否伴隨 ADHD，其遭受校園與網路霸凌的風險皆顯著增加，且社會互動與內化問題在其中扮演關鍵的中介角色。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">共病症</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41964094/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧠</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>情節式未來思考改善社區診斷之成人注意力不足過動症患者的日常前瞻記憶表現</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>透過「情節式未來思考」策略，即在腦海中具體模擬未來執行計畫的過程，能有效幫助成人 ADHD 患者改善日常生活中的前瞻記憶表現。</p>
+          <div class="card-footer">
+            <span class="tag">成人ADHD</span><span class="tag">執行功能</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41684048/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🇸🇪</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>瑞典注意力不足過動症兒童與成人藥物治療的順從性：一項全國性研究</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>瑞典全國性數據顯示 ADHD 藥物整體順從性達 78.2%，但青少年族群的服藥順從性相對較低，是臨床需重點關注的年齡層。</p>
+          <div class="card-footer">
+            <span class="tag">藥物治療</span><span class="tag">成人ADHD</span><span class="tag">兒童ADHD</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41562322/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">👴</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>美國全國老年樣本中的自我報告注意力不足過動症症狀與認知表現</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>在中老年族群中，自我報告的 ADHD 注意力不集中症狀與記憶力測試表現衰退有顯著關聯，呼籲臨床人員應更加重視老年族群的 ADHD 評估。</p>
+          <div class="card-footer">
+            <span class="tag">成人ADHD</span><span class="tag">診斷評估</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41334628/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🗣️</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>注意力不足過動症跨生命週期的敘事與非敘事話語技巧：文獻系統性回顧</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>患有 ADHD 的兒童與成人在敘事及非敘事表達上常出現連貫性不足、頻繁變換主題等問題，這直接影響了他們的社交溝通與學業表現。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">成人ADHD</span><span class="tag">診斷評估</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41250857/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧬</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>剖析大腦皮層結構在社會經濟地位至注意力不足過動症致病機轉中的中介角色：孟德爾隨機化研究與中介分析</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>低社經地位會透過影響腦島表面積等大腦皮層結構的發育，進而增加罹患 ADHD 的風險，為預防醫學提供了神經生物學的實證見解。</p>
+          <div class="card-footer">
+            <span class="tag">神經影像</span><span class="tag">神經科學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41220056/" target="_blank">PubMed →</a>
+          </div>
+        </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+            <div class="topic-row">
+              <span class="topic-name">藥物治療</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">心理與行為介入</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">成人ADHD</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">5</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">兒童ADHD</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">5</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">執行功能</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">公共衛生與社會介入</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div>
+              <span class="topic-count">3</span>
+            </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">Centanafadine</span><span class="keyword">網路親子互動治療</span><span class="keyword">執行功能</span><span class="keyword">治療順從性</span><span class="keyword">健康照護不平等</span><span class="keyword">運動介入</span></div></div>
+
+  <div class="clinic-banner">
+    <div class="clinic-links">
+      <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">🏥</span>
+        <span class="clinic-name">李政洋身心診所首頁</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+      <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">📬</span>
+        <span class="clinic-name">訂閱電子報</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：glm-5.1</span>
+    <span><a href="https://github.com/u8901006/adhd-brain">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
