@@ -49,13 +49,14 @@ jobs:
           fi
           echo "Date: $(cat $GITHUB_OUTPUT | grep target | cut -d= -f2)"
 
-      - name: Fetch ADHD papers from PubMed
+      - name: Fetch ADHD papers from PubMed (deduplicated)
         run: |
           python scripts/fetch_papers.py \
             --days 7 \
             --max-papers 40 \
             --json \
-            --output papers.json
+            --output papers.json \
+            --tracking docs/published_pmids.json
         continue-on-error: true
 
       - name: Check papers data
