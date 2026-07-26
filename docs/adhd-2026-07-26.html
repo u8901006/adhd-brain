@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ADHD Brain &middot; ADHD文獻日報 &middot; 2026年7月26日</title>
+<meta name="description" content="2026年7月26日 ADHD 文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f0f4ff; --surface: #f8faff; --line: #c8d6e5; --text: #1e2a3a; --muted: #5a6d82; --accent: #2d6cdf; --accent-soft: #d4e2fc; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #e8f0ff 0, var(--bg) 55%, #d0dff5 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), #6fa3f7); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(45,108,223,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(45,108,223,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(30,42,58,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(30,42,58,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,42,58,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #2d7d46; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(45,125,70,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,109,130,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(45,108,223,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #6fa3f7); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 48px; animation: fadeUp 0.5s ease 0.3s both; }
+  .clinic-links { display: flex; flex-direction: column; gap: 12px; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(30,42,58,0.04); }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,42,58,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } .clinic-links { flex-direction: column; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🧠</div>
+    <div class="header-text">
+      <h1>ADHD Brain &middot; ADHD文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年7月26日</span>
+        <span class="badge badge-count">📊 5 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + Zhipu AI GLM-5.1</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日 ADHD 文獻趨勢</h2>
+    <p class="summary-text">今日文獻亮點在於開發出能跨越不同評分量表的 ADHD 分數轉換工具，解決了長期以來臨床與研究數據難以互通的痛點；同時，環境因子（如錳暴露）與 3C 螢幕使用時間對兒童神經行為與情緒調節的影響也成為關注焦點。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">🛠️</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>基於 53 項隨機對照試驗數據開發的 ADHD 評分量表分數轉換工具</h3>
+          <p class="journal-source">Journal of child and adolescent psychopharmacology &middot; Tool for Converting ADHD Rating Scales Scores Based on Individual Participant Data from 53 Randomized Controlled Trials of ADHD Medications.</p>
+          <p>本研究整合了 53 項臨床試驗數據，開發出線上演算工具，能將不同 ADHD 評定量表的分數進行等量化轉換，大幅提升了跨研究數據的整合性與臨床療效解讀的便利性。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">參與 53 項 ADHD 藥物隨機對照試驗的兒童、青少年及成人（每項試驗至少包含兩種評估量表）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">應用迴歸模型、隨機森林及等百分位連結等演算法，開發跨量表分數轉換工具</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">不同演算法模型之間預測誤差的比較</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">成功建立六種常用量表（如 ADHD-RS-IV 與 CPRS-R:S）之間的轉換模型，並提供線上工具</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">診斷評估</span><span class="tag">藥物治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42316867/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">📱</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>青春期前螢幕使用時間與易怒情緒的雙向關聯：時間網絡分析</h3>
+          <p class="journal-source">Journal of child and adolescent psychopharmacology &middot; Bidirectional Associations Between Screen Time and Irritability in Preadolescence: A Temporal Network Analysis.</p>
+          <p>ABCD 大型研究數據指出，看電視與使用社群媒體會單向增加兒童的易怒情緒，且「線上聊天」與「易怒」互為雙向惡化的因果關係，此結果已排除 ADHD 等共病症的干擾。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">參與 ABCD 研究的青春期前兒童（N=8979，平均年齡 9.5 歲）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">不同類型的螢幕使用時間（看電視、社群媒體、線上聊天、影音串流）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">受試者內部不同時間點的行為與情緒變化</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">以家長評估的兒童行為清單（CBCL）衡量易怒情緒的變化</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">情緒調節</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41700679/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">⚗️</span>
+            <span class="utility-mid">中实用性</span>
+          </div>
+          <h3>錳暴露與兒童注意力不足過動症相關神經行為結果：人類研究的系統性回顧</h3>
+          <p class="journal-source">Journal of child and adolescent psychopharmacology &middot; Manganese Exposure and Attention-Deficit/Hyperactivity Disorder-Related Neurobehavioral Outcomes in Children: A Systematic Review of Human Studies.</p>
+          <p>系統性回顧確認了錳暴露與兒童 ADHD 症狀及神經行為發展之間存在複雜的非線性關係，指出環境毒理學是評估注意力缺陷時不可忽視的一環。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">一般兒童族群（涵蓋 30 項觀察性研究）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">環境錳暴露（透過生物標記或環境評估測量）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">低劑量/正常錳暴露量與高劑量暴露量之比較</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">ADHD 發生風險、症狀嚴重度及相關神經行為異常</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">飲食營養</span><span class="tag">神經科學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42130043/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">🚗</span>
+            <span class="utility-mid">中实用性</span>
+          </div>
+          <h3>注意力不足過動症青少年取得駕照延遲之影響因素探討</h3>
+          <p class="journal-source">Journal of attention disorders &middot; The Examination of Factors Contributing to Delays in Obtaining a Driver's License for Youth With Attention-Deficit/Hyperactivity Disorder.</p>
+          <p>針對 ADHD 青少年的駕駛介入計畫（STEER）發現，該介入特別有助於反應時間變異性大的青少年在 12 個月內成功取得駕照，顯示非藥物介入的針對性療效。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">172 名患有 ADHD 的青少年（參與隨機對照試驗）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">STEER 駕駛安全介入計畫（Supporting a Teen's Effective Entry to the Roadway）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">常規照護組</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">12 個月追蹤時的駕照取得狀態</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">執行功能</span><span class="tag">注意力</span><span class="tag">衝動控制</span><span class="tag">家長訓練</span><span class="tag">職能功能</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42500931/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📭</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>本篇文獻目前缺乏標題與摘要資訊</h3>
+          <p class="journal-source">Journal of child and adolescent psychopharmacology</p>
+          <p>PubMed 該筆資料尚無完整標題與摘要，無法進行有效之 PICO 分析與臨床價值評估。</p>
+          <div class="card-footer">
+            
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42163533/" target="_blank">PubMed →</a>
+          </div>
+        </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+            <div class="topic-row">
+              <span class="topic-name">診斷評估</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">藥物治療</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">情緒調節</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">兒童ADHD</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">飲食營養</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">神經科學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">執行功能</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">注意力</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">衝動控制</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">家長訓練</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">職能功能</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">1</span>
+            </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">量表轉換工具</span><span class="keyword">情緒調節</span><span class="keyword">螢幕時間</span><span class="keyword">環境暴露</span><span class="keyword">錳</span><span class="keyword">駕照取得</span><span class="keyword">執行功能</span></div></div>
+
+  <div class="clinic-banner">
+    <div class="clinic-links">
+      <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">🏥</span>
+        <span class="clinic-name">李政洋身心診所首頁</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+      <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">📬</span>
+        <span class="clinic-name">訂閱電子報</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：glm-5.1</span>
+    <span><a href="https://github.com/u8901006/adhd-brain">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
