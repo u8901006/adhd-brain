@@ -74,14 +74,14 @@ jobs:
             echo "No papers found, will generate empty report"
           fi
 
-      - name: Generate report with Zhipu AI GLM-5.1
+      - name: Generate report with NVIDIA Nemotron
         env:
-          ZHIPU_API_KEY: ${{ secrets.ZHIPU_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
         run: |
           python scripts/generate_report.py \
             --input papers.json \
             --output docs/adhd-${{ steps.date.outputs.target }}.html \
-            --api-key "$ZHIPU_API_KEY"
+            --api-key "$NVIDIA_API_KEY"
 
       - name: Generate index page
         run: python scripts/generate_index.py

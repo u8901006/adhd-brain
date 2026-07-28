@@ -1,11 +1,11 @@
 # ADHD Brain
 
-ADHD 文獻日報 - 每日自動從 PubMed 抓取最新 ADHD 相關文獻，由 Zhipu AI GLM-5.1 分析整理，自動生成 HTML 報告並部署到 GitHub Pages。
+ADHD 文獻日報 - 每日自動從 PubMed 抓取最新 ADHD 相關文獻，由 NVIDIA Nemotron 分析整理，自動生成 HTML 報告並部署到 GitHub Pages。
 
 ## 架構
 
 - **PubMed API** - 抓取 ADHD 相關期刊的最新論文
-- **Zhipu AI GLM-5.1** - 分析、摘要、分類論文
+- **NVIDIA Nemotron** - 分析、摘要、分類論文
 - **GitHub Actions** - 每日台北時間 11:00 自動執行
 - **GitHub Pages** - 部署靜態 HTML 報告
 
@@ -28,5 +28,5 @@ ADHD 文獻日報 - 每日自動從 PubMed 抓取最新 ADHD 相關文獻，由 
 ```bash
 pip install -r scripts/requirements.txt
 python scripts/fetch_papers.py --days 7 --max-papers 40 --json --output papers.json
-python scripts/generate_report.py --input papers.json --output docs/adhd-test.html --api-key $ZHIPU_API_KEY
+python scripts/generate_report.py --input papers.json --output docs/adhd-test.html --api-key $NVIDIA_API_KEY
 ```
