@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ADHD Brain &middot; ADHD文獻日報 &middot; 2026年8月6日</title>
+<meta name="description" content="2026年8月6日 ADHD 文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f0f4ff; --surface: #f8faff; --line: #c8d6e5; --text: #1e2a3a; --muted: #5a6d82; --accent: #2d6cdf; --accent-soft: #d4e2fc; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #e8f0ff 0, var(--bg) 55%, #d0dff5 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), #6fa3f7); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(45,108,223,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(45,108,223,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(30,42,58,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(30,42,58,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,42,58,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #2d7d46; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(45,125,70,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,109,130,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(45,108,223,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #6fa3f7); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 48px; animation: fadeUp 0.5s ease 0.3s both; }
+  .clinic-links { display: flex; flex-direction: column; gap: 12px; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(30,42,58,0.04); }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,42,58,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } .clinic-links { flex-direction: column; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🧠</div>
+    <div class="header-text">
+      <h1>ADHD Brain &middot; ADHD文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年8月6日</span>
+        <span class="badge badge-count">📊 13 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日 ADHD 文獻趨勢</h2>
+    <p class="summary-text">今日ADHD文獻聚焦於風險行為雙面性（負向與正向）、共病焦慮對認知控制的特定影響、以及主觀與客觀測量在睡眠與努力感知上的脫節，顯示研究正從單一症狀導向向多維度功能與情境適應轉移。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">⚖️</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>ADHD 特質與多元風險行為的關聯：負向、正向及親社會行為的差異模式</h3>
+          <p class="journal-source">Journal of attention disorders &middot; ADHD Characteristics Are Linked to Divergent Risk-Taking Behaviors.</p>
+          <p>發現ADHD特質不僅與負向風險行為顯著相關，亦與正向及親社會風險行為存在較弱但一致的關聯，挑戰傳統僅見其於衝動負面結果的觀點。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">荷蘭一般人群中的611名參與者（橫斷樣本）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（ correlational 研究）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">內化症狀（憂鬱、焦慮、壓力）作為對照變項</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">ADHD特質對負向風險行為的預測力最強；正向及親社會風險行為亦有關聯但較弱，且隨年齡增加而減少</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">情緒調節</span><span class="tag">衝動控制</span><span class="tag">神經科學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41914437/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">🧠</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>共病焦慮兒童ADHD的注意與認知控制特徵：功能特異性缺陷證據</h3>
+          <p class="journal-source">Journal of attention disorders &middot; Characterizing Attention and Cognitive Control Profiles of Children With ADHD and Anxiety.</p>
+          <p>ADHD併焦慮兒童在認知控制（特別是反應時間變異性與錯誤監控）上顯示功能特異性缺陷，而非注意過程本身受損，指出共病焦慮可能放大執行功能失調。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">7-14歲兒童：ADHD單獨組(N=37)、ADHD+焦慮症(N=24)、純焦慮症(N=39)、典型發展對照組(N=36)</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（橫斷比較）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">典型發展兒童</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">ADHD±焦慮組在認知控制相關任務（ANT誤差、變異性；AX-CPT準確度、A-cue偏誤）顯著落後於對照組，效應大中至大（Cohen's d > 0.8），但注意網路功能無顯著差異</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">共病症</span><span class="tag">執行功能</span><span class="tag">注意力</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41910111/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">💡</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>ADHD兒童的主觀努力感知：與表現脫節的元認知特質及其臨床意涵</h3>
+          <p class="journal-source">Journal of attention disorders &middot; Metacognitive Ratings on Cognitive Tasks: Task Difficulty and Effort Rating Differences in Children With ADHD and Neurotypical Children.</p>
+          <p>ADHD兒童在認知任務上主觀報告較低努力感，且此努力感知與表現呈弱相關但能預測困難經驗，說明其困難部分源於動機或自我調節而非純認知能力不足。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">8-12歲兒童：ADHD(N=38)、神經典型(N=42)</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（橫斷）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">神經典型兒童</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">ADHD群體總體報告較低努力程度，但任務難度評分無組間差異；努力感知在任務間具一致性（特質化），且能預測困難經驗，超越單純表現指標</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">執行功能</span><span class="tag">心理治療</span><span class="tag">診斷評估</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41889063/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">😴</span>
+            <span class="utility-mid">中实用性</span>
+          </div>
+          <h3>ADHD症狀嚴重程度與主觀睡眠障礙的顯著關聯：基於大樣本縱向證據</h3>
+          <p class="journal-source">Journal of attention disorders &middot; The Relationship Between ADHD Symptom Severity and Sleep Disturbance Using Accelerometer and the Subjective Sleep Disturbance Scale.</p>
+          <p>ADHD症狀嚴重程度與父母報告的睡眠障礙呈中度正相關（r=.41），但與客觀加速計測總睡眠時間幾乎無關聯（r=-.05），提醒主觀與客觀睡眠測量的脫節。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">早 adolescences（平均12.0歲）來自ABCD研究(N=4,414)</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（橫斷與縱向）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">症狀較低組</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">ADHD症狀嚴重程度顯著預測較高SDSC總分（β=.41，縱向β=.34），但對客觀睡眠時長影響極微（β=-.03）</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">睡眠</span><span class="tag">診斷評估</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41883200/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">👁️‍🗨️</span>
+            <span class="utility-mid">中实用性</span>
+          </div>
+          <h3>ADHD兒童注意表現與同理心的緊密關聯： attentional déficit 可能基礎社會認知缺陷</h3>
+          <p class="journal-source">Journal of attention disorders &middot; The Association Between Attention Performance and Empathy in Children Diagnosed with ADHD.</p>
+          <p>ADHD兒童在Go/No-Go任務中遺漏錯誤增加且RMET成績較低，且注意相關變數（遺漏錯誤、注意不集中）顯著預測同理心表現，支持注意功能與社會認知之間的直接鏈結。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">7-12歲兒童：ADHD(N=27)、典型發展對照組(N=26)</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（橫斷）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">典型發展兒童</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">ADHD群體遺漏錯誤顯著增加（負相關），RMET總分顯著降低；注意表現（遺漏錯誤、 inattention）顯著負向預測同理心成績</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">注意力</span><span class="tag">情緒調節</span><span class="tag">社會認知</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41679739/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">👥</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>自我與他人報告不一致：ADHD與ASD在社會功能上的特異性及其對心理結果的影響</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>發現ADHD兒童傾向低估自身社會困難嚴重程度（親告高於自報），此現象在ASD及典型發展組不存在，且僅限於社會功能領域，與外在化行為正相關。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">診斷評估</span><span class="tag">心理治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41910753/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🎭</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>CAARS-2自報量表對精緻偽裝的易感性：臨床評估需結合客觀功能證據</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>在受誘導與訓練的偽裝條件下，CAARS-2的負向印象指數（NII）敏感度極低（8%），多數偽裝者能同時取得高ADHD指數與功能受損報告，提醒臨床評估的脆弱性。</p>
+          <div class="card-footer">
+            <span class="tag">成人ADHD</span><span class="tag">診斷評估</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41821297/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🔗</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>探索連結ADHD症狀與青少年內在化問題的潛在中介機制：自尊與父母心理健康為關鍵目標</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>縱向探索性中介分析發現雖多數 hypothesised 中介未顯著，但自尊與父母心理健康兩項顯著，建議將其作為未來干預的優先目標。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">共病症</span><span class="tag">心理治療</span><span class="tag">家長訓練</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41789525/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">😔</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>認知脫離症候群兒童在社會技能與情緒辨識上的嚴重缺損：超越ADHD的獨特社會認知困境</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>升高CDS症狀兒童在社會技能與RMET表現上顯著弱於ADHD及對照組，顯示其社會認知缺損更為廣泛，說明CDS可能為一種獨立的社會-認知發展障礙。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">共病症</span><span class="tag">注意力</span><span class="tag">社會認知</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41504022/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">👧👦</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>青少年ADHD與社會焦慮及友誼品質的關聯：女童在支持與衝突解決方面表現較佳</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>埃及ADHD青少年報告較高社會焦慮與較低友誼品質，但女童在支持、親密度與衝突解決方面優於男童，提示性別敏感社會介入的必要性。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">情緒調節</span><span class="tag">社會認知</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41889016/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🔗</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>親-子依附與認知功能對兒童ADHD症狀的間接影響：經由外在化行為與執行功能的媒介</h3>
+          <p class="journal-source">Child psychiatry and human development</p>
+          <p>親子依附不安全與混亂型附著與ADHD症狀相關，但此關係完全經由外在化症狀與執行功能困難媒介，顯示其影響為間接而非直接。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">神經科學</span><span class="tag">家長訓練</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/39570483/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💔</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>自我污名化如何扭曲ADHD青少年及其父母對社會情感優勢的感知：強調強基於優勢的介入必要性</h3>
+          <p class="journal-source">Child psychiatry and human development</p>
+          <p>青少年自我污名化顯著降低其對自身社會情感優勢的感知，父母自我污名化則影響其對家庭參與與內在優勢的評價，但互不預測對方的評價，說明污名化扭曲主觀感受而非反映客觀能力。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">心理治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/40498240/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📝</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>【勘誢】原文：《社會情感優勢與ADHD青少年及其父母自我污名化體驗之關係》</h3>
+          <p class="journal-source">Child psychiatry and human development</p>
+          <p>該條目為先前論文的勘誢聲明，無新增科學內容。</p>
+          <div class="card-footer">
+            
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41071462/" target="_blank">PubMed →</a>
+          </div>
+        </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+            <div class="topic-row">
+              <span class="topic-name">兒童ADHD</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">9</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">注意力</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:55%"></div></div>
+              <span class="topic-count">5</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">執行功能</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:55%"></div></div>
+              <span class="topic-count">5</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">情緒調節</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:44%"></div></div>
+              <span class="topic-count">4</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">社會認知</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:44%"></div></div>
+              <span class="topic-count">4</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">診斷評估</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:44%"></div></div>
+              <span class="topic-count">4</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">心理治療</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">共病症</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">神經科學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:22%"></div></div>
+              <span class="topic-count">2</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">睡眠</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:11%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">家長訓練</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:22%"></div></div>
+              <span class="topic-count">2</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">成人ADHD</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:11%"></div></div>
+              <span class="topic-count">1</span>
+            </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">ADHD特質與風險行為</span><span class="keyword">共病焦慮與認知控制</span><span class="keyword">主觀努力感知</span><span class="keyword">睡眠主觀-客觀脫節</span><span class="keyword">注意表現與同理心</span></div></div>
+
+  <div class="clinic-banner">
+    <div class="clinic-links">
+      <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">🏥</span>
+        <span class="clinic-name">李政洋身心診所首頁</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+      <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">📬</span>
+        <span class="clinic-name">訂閱電子報</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/adhd-brain">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
