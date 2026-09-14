@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ADHD Brain &middot; ADHD文獻日報 &middot; 2026年9月14日</title>
+<meta name="description" content="2026年9月14日 ADHD 文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f0f4ff; --surface: #f8faff; --line: #c8d6e5; --text: #1e2a3a; --muted: #5a6d82; --accent: #2d6cdf; --accent-soft: #d4e2fc; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #e8f0ff 0, var(--bg) 55%, #d0dff5 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), #6fa3f7); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(45,108,223,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(45,108,223,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(30,42,58,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(30,42,58,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,42,58,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #2d7d46; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(45,125,70,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,109,130,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(45,108,223,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #6fa3f7); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 48px; animation: fadeUp 0.5s ease 0.3s both; }
+  .clinic-links { display: flex; flex-direction: column; gap: 12px; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(30,42,58,0.04); }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,42,58,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } .clinic-links { flex-direction: column; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🧠</div>
+    <div class="header-text">
+      <h1>ADHD Brain &middot; ADHD文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年9月14日</span>
+        <span class="badge badge-count">📊 11 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日 ADHD 文獻趨勢</h2>
+    <p class="summary-text">今日ADHD文獻呈現多元化趨勢，藥物治療與基因學（特別是CYP2D6藥物基因組）與情緒調節、診斷經驗及共病焦慮成為熱點，顯示個體化醫療與全人照護的重要性日益增加。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">💊</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>CYP2D6基因型影響兒童青少年ATX停藥原因：代謝能力高者易因療效不足停藥，代謝能力低者易因毒性停藥</h3>
+          <p class="journal-source">Journal of child and adolescent psychopharmacology &middot; Association of Atomoxetine Discontinuation Patterns with CYP2D6 Phenotype in Children and Adolescents with ADHD</p>
+          <p>首次證實CYP2D6代謝型別直接影響ATX停藥原因：正常/超快代謝者易因療效不足停藥，而代謝不良/中間型者易因毒性停藥，支持ATX用藥前基因型別檢測以個體化劑量。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">21歲以下兒童青少年，具已知CYP2D6基因型並處方ATX者（n=108）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">ATX治療，依CYP2D6活動分數調整後分組（不良/中間/正常/超快代謝型）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">不同CYP2D6表型組間停藥原因（療效不足 vs 毒性）之比較</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">正常/超快代謝者因療效不足停藥風險增加（sHR=1.9）；代謝不良/中間者因毒性停藥風險增加（sHR=0.4）；劑量與基因型時點相關：基因型先於處方時初始劑量較低（0.5 vs 0.8 mg/kg/day）</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">藥物治療</span><span class="tag">基因學</span><span class="tag">兒童ADHD</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42433076/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">😰</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>ADHD成人焦慮併發症的第一個meta分析：ADHD群焦慮症狀中等效應（g=0.77），非臨床對照組顯著更高效應</h3>
+          <p class="journal-source">Journal of attention disorders &middot; Symptoms of Anxiety in Adults with ADHD: A Systematic Review and Meta-Analysis</p>
+          <p>首個meta分析證實ADHD成人焦慮症狀顯著升高（中等效應），且效應大小受對照群類型影響極大：非臨床對照組效應近兩倍於臨床對照組，提醒臨床評估時需注意比較群選擇。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">成人ADHD患者 vs 對照群（非臨床或臨床）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（觀察性研究）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">ADHD群 vs 非臨床對照群 / 臨床對照群</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">焦慮症狀分數差異（Hedges's g）</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">共病症</span><span class="tag">成人ADHD</span><span class="tag">焦慮</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42400277/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">🧠</span>
+            <span class="utility-high">高实用性</span>
+          </div>
+          <h3>成人ADHD診斷體驗的系統性文獻綜述：確認診斷是雙重身份事件—既帶來自我同情也伴隨身份困惑與系統障礙</h3>
+          <p class="journal-source">Journal of attention disorders &middot; A Systematic Review of Lived Experiences of Receiving a Diagnosis of ADHD in Adulthood</p>
+          <p>成人ADHD診斷是複雜關係過程：在自我層面觸�傳記反思並可能提升自我同情，但在社會層面面臨污名與 disclosure dilemma，在系統層面遇到服務延遲與資源不平等。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">成人首次被診斷ADHD者</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（質性研究綜合）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">診斷體驗的三大主題：與自我、他人、系統的關係</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">診斷評估</span><span class="tag">成人ADHD</span><span class="tag">心理治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42216788/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">⚡</span>
+            <span class="utility-mid">中实用性</span>
+          </div>
+          <h3>兒童ADHD與焦慮的注意力神經機制：共享早期注意力處理異常，但在錯誤監測與自我調節上有明確分離</h3>
+          <p class="journal-source">Journal of attention disorders &middot; Inattention in Pediatric ADHD and Anxiety: Neurophysiological Evidence for Distinct and Overlapping Cognitive Mechanisms</p>
+          <p>透過ERP證實ADHD與焦慮兒童在注意力早期階段（刺激辨識、動態唤醒）有共享神經異常，但ADHD群顯著缺乏錯誤後行為調整（post-error slowing），反映自我監測弱；焦慮群則過度錯誤偵測但評估減少。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">7-11歲兒童：ADHD-only、焦慮-only、併發群、典型發展對照群（n=111）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">三項電腦注意力任務 + 高密度EEG</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">四組間行為與ERP指標（N2、ERN、Pe、aperiodic exponent、post-error slowing）</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">共享：預刺激aperiodic exponent與N2幅度降低；分離：ADHD群降低post-error slowing；焦慮群增大ERN、減少Pe</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">注意力</span><span class="tag">執行功能</span><span class="tag">神經科學</span><span class="tag">兒童ADHD</span><span class="tag">焦慮</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42095637/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">😊</span>
+            <span class="utility-mid">中实用性</span>
+          </div>
+          <h3>ADHD成人對自身狀態的正向態度隨多動/衝動症狀增加而升高，但注意力不足症狀關聯不一致</h3>
+          <p class="journal-source">Journal of attention disorders &middot; ADHD Individuals' Positivity About Their Condition Varies by Their Levels of Hyperactivity/Impulsivity Versus Inattention Symptoms.</p>
+          <p>開發並驗證PATAS量表，發現多動/衝動症狀與對ADHD的正態度顯著正相關（跨三個樣本一致），而注意力不足症狀則呈不一致的負相關趨勢，凸顯ADHD內在異質性。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">三個獨立成人樣本（含跨國與雙語言群）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">ADHD症狀量表 + 新開發PATAS（正向態度量表，r=.89）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">高 vs 低多動/衝動症狀組；高 vs 低注意力不足症狀組</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">多動/衝動症狀頻率與PATAS得分顯著正相關；注意力不足症狀與PATAS關聯不一致</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">成人ADHD</span><span class="tag">情緒調節</span><span class="tag">神經科學</span><span class="tag">神經多樣性</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42411788/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🔬</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>ADHD與自閉症情緒失調的預測編碼理論框架：提出過度精確度與預期更新緩慢為核心機制，並生理相關測量方式</h3>
+          <p class="journal-source">Journal of child and adolescent psychopharmacology</p>
+          <p>提出預測編碼模型解釋ADHD與自閉症情緒失調：ADHD可能因期望不穩定與gain控制不穩定導致情緒快速波動；建議透過心率變異、瞳孔變異等生理指標驗證，介入應著重恢復靈活推論而非壓抑情緒。</p>
+          <div class="card-footer">
+            <span class="tag">情緒調節</span><span class="tag">神經科學</span><span class="tag">自閉症</span><span class="tag">兒童ADHD</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42116687/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🌍</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>大學生GRIT與ADHD症狀關聯之種族異質性：堅持興趣（COI）對ADHD的保護作用在亞裔學生顯著弱於白人學生</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>雖GRIT與COI總體上與ADHD症狀負相關，但亞裔大學生中COI對症狀的負向關聯顯著弱於白人學生，提醒韌性因素需考慮文化背景。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">成人ADHD</span><span class="tag">心理治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42026821/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">👫</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>新興成人ADHD症狀與友伴關係：認知脫離症狀（CDS）緩和ADHD對友伴衝擊的負面影響</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>內化症狀部分中介ADHD與友伴質量關係；更重要的是，CDS症狀顯著調節此關係：高CDS時，ADHD症狀對友伴衝擊的負面影響變弱，提議CDS可能具緩衝作用。</p>
+          <div class="card-footer">
+            <span class="tag">成人ADHD</span><span class="tag">友伴關係</span><span class="tag">認知脫離症候群</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42026819/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">⚠️</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>兒童ADHD症狀經由功能障礙中介精神症狀（特別是憂鬱與攻擊性），負面情緒增強此路徑</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>功能障礙完全中介ADHD與焦慮症狀關係（中兒樣本），並部分中介憂鬱與攻擊性；負面情緒氣質增強間接效應，提醒早期改善功能表現可降低精神共病風險。</p>
+          <div class="card-footer">
+            <span class="tag">兒童ADHD</span><span class="tag">功能障礙</span><span class="tag">精神共病</span><span class="tag">氣質</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42026817/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💡</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>ADHD成人優勢的範疇文獻綜述：創造力最常被研究（66%），其次為社會親和屬性與興趣導向注意力</h3>
+          <p class="journal-source">Journal of attention disorders</p>
+          <p>ADHD成人優勢研究多聚焦於創造力、親社會行為與興趣-based注意力，支持將注意力差異重新框架為在特定情境下的優勢，而非純粹缺陷。</p>
+          <div class="card-footer">
+            <span class="tag">成人ADHD</span><span class="tag">神經多樣性</span><span class="tag">優勢</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41889015/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💊</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>併發破壞性情緒失調障礙（DMDD）的ADHD青少年藥物治療模式：更多使用非興奮劑且興奮劑仍具保護作用</h3>
+          <p class="journal-source">Journal of child and adolescent psychopharmacology</p>
+          <p>ADHD+內部疾病+DMDD青少年使用更多非興奮劑（RR 1.73）和其他精神藥物，但興奮劑在降低自殺行為、住院等不良事件上仍顯著優於非興奮劑（aHR 0.33-0.73），提醒謹慎檢視非興奮劑過度使用。</p>
+          <div class="card-footer">
+            <span class="tag">藥物治療</span><span class="tag">共病症</span><span class="tag">兒童ADHD</span><span class="tag">DMDD</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41804951/" target="_blank">PubMed →</a>
+          </div>
+        </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+            <div class="topic-row">
+              <span class="topic-name">藥物治療</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:75%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">成人ADHD</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">4</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">兒童ADHD</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">4</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">情緒調節</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:75%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">診斷評估</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+              <span class="topic-count">2</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">共病症</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:75%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">基因學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:25%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">注意力</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+              <span class="topic-count">2</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">執行功能</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+              <span class="topic-count">2</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">神經科學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:75%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">心理治療</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:75%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">神經多樣性</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+              <span class="topic-count">2</span>
+            </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">CYP2D6</span><span class="keyword">焦慮</span><span class="keyword">診斷體驗</span><span class="keyword">神經機制</span><span class="keyword">正向態度</span></div></div>
+
+  <div class="clinic-banner">
+    <div class="clinic-links">
+      <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">🏥</span>
+        <span class="clinic-name">李政洋身心診所首頁</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+      <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">📬</span>
+        <span class="clinic-name">訂閱電子報</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/adhd-brain">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
