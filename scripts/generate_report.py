@@ -146,7 +146,7 @@ def analyze_papers(api_key: str, papers_data: dict) -> dict:
         "chat_template_kwargs": {"enable_thinking": False},
     }
 
-    models_to_try = [MODEL_NAME, FALLBACK_MODEL]
+    models_to_try = list(dict.fromkeys([MODEL_NAME, FALLBACK_MODEL]))
 
     for model in models_to_try:
         payload["model"] = model
